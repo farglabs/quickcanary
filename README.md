@@ -1,0 +1,2 @@
+# quickcanary
+Ultra-lightweight honeypot
