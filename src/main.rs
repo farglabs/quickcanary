@@ -6,7 +6,7 @@ fn main() {
         let listener445 = TcpListener::bind("0.0.0.0:445").unwrap();
         for stream in listener445.incoming() {
             let stream = stream.unwrap();
-            println!("CO!");
+            println!(alert(445));
         }
     });
     thread::spawn(|| {
@@ -15,7 +15,7 @@ fn main() {
             let stream = stream.unwrap();
             //let req = stream.req.remote();
             //let remote = listener.req.remote();
-            println!("H2S!");
+            println!(alert(80));
         }
     });
     println!("Started everything we could.");
@@ -24,6 +24,17 @@ fn main() {
         let stream = stream.unwrap();
         //let req = stream.req.remote();
         //let remote = listener.req.remote();
-        println!("CH4!");
+        println!(alert(443));
     }
+}
+
+fn alert(n: u32) {
+    let message = String::from("Yikes! We don't know what just hit us!");
+    match n{
+        80=>message = "H2S!",
+        443=>message = "CH4!",
+        445=>message = "CO!",
+        _=>println!("Uh oh, we need to update our match list!"),
+    }
+    message
 }
