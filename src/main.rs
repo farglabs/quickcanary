@@ -7,6 +7,7 @@ fn main() {
         for stream in listener445.incoming() {
             let stream = stream.unwrap();
             println!(alert(445));
+    // TODO: call a processAlert method that rather than println here
         }
     });
     thread::spawn(|| {
@@ -16,6 +17,7 @@ fn main() {
             //let req = stream.req.remote();
             //let remote = listener.req.remote();
             println!(alert(80));
+    // TODO: call a processAlert method that rather than println here
         }
     });
     println!("Started everything we could.");
@@ -25,6 +27,7 @@ fn main() {
         //let req = stream.req.remote();
         //let remote = listener.req.remote();
         println!(alert(443));
+    // TODO: call a processAlert method that rather than println here
     }
 }
 
@@ -37,4 +40,5 @@ fn alert(n: u32) {
         _=>println!("Uh oh, we need to update our match list!"),
     }
     message
+    // Rather than returning here, we could make our alert here. Or have a separate processing method
 }
