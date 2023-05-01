@@ -20,15 +20,17 @@ fn main() {
     // TODO: call a processAlert method that rather than println here
         }
     });
-    println!("Started everything we could.");
+    thread::spawn(|| {
     let listener443 = TcpListener::bind("0.0.0.0:443").unwrap();
-    for stream in listener443.incoming() {
-        let stream = stream.unwrap();
-        //let req = stream.req.remote();
-        //let remote = listener.req.remote();
-        println!(alert(443));
+        for stream in listener443.incoming() {
+            let stream = stream.unwrap();
+            //let req = stream.req.remote();
+            //let remote = listener.req.remote();
+            println!(alert(443));
     // TODO: call a processAlert method that rather than println here
-    }
+        }
+    });
+    println!("Started everything we could.");
 }
 
 fn alert(n: u32) {
